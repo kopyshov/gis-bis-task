@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: render
+  config:
+    import: optional:configserver:http://0.0.0.0:8071

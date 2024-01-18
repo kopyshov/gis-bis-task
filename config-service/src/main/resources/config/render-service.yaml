@@ -1,0 +1,24 @@
+application:
+  name: render-service
+
+server:
+  port: 0
+  error:
+    include-message: always
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/p_geodata
+    username: postgres
+    password: postgres
+  sql:
+    init:
+      mode: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+#      defaultZone: http://eureka-service:8080/eureka
+
+

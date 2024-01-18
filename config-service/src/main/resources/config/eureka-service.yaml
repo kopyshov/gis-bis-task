@@ -1,0 +1,16 @@
+server:
+  port: 8080
+eureka:
+  instance:
+    hostname: localhost
+#    hostname: eureka-service
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+#      defaultZone: http://eureka-service:8080/eureka/
+logging:
+  level:
+    com.netflix.eureka: error
+    com.netflix.discovery: error

@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+
+  config-server:
+    container_name: config-server
+    build: ./config-server
+    image: config-server
+#    ports:
+#      - "8081:8081"
+
+  eureka-server:
+    container_name: eureka-server
+    build: ./eureka-server
+    image: eureka-server
+#    ports:
+#      - "8080:8080"
+
+
+  gateway-proxy:
+    container_name: gateway-proxy
+    build: ./gateway-proxy
+    image: gateway-proxy
+#    ports:
+#      - "8082:8082"
+    depends_on:
+      - config-server
+
+  postgres:
+      container_name: p_geodata
+      build:
+        context: .
+        dockerfile: Dockerfile-db
+      restart: always
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: p_geodata
+      ports:
+        - "5432:5432"
+      volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        - database_volume:/var/lib/postgresql/data
+  render-service:
+    container_name: render-service
+    build: ./render-service
+    image: render-service
+    depends_on:
+      - config-server
+
+volumes:
+  database_volume:
