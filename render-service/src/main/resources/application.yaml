@@ -1,5 +1,5 @@
 spring:
   application:
-    name: render
+    name: render-service
   config:
-    import: optional:configserver:http://0.0.0.0:8071
+    import: optional:configserver:http://localhost:8081
