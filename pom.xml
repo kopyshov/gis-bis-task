@@ -10,8 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-<!--        <module>config-service</module>-->
-<!--        <module>eureka-service</module>-->
+        <module>config-service</module>
+        <module>eureka-service</module>
+        <module>gateway-proxy</module>
+        <module>render-service</module>
     </modules>
 
 </project>
