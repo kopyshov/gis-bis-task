@@ -8,5 +8,5 @@ RUN ./mvnw clean package
 
 FROM openjdk:17-jdk-slim
 WORKDIR /
-COPY --from=build /target/*.jar gateway-proxy.jar
-ENTRYPOINT ["java", "--add-opens", "java.base/java.time=ALL-UNNAMED", "-jar", "gateway-proxy.jar"]
+COPY --from=build /target/*.jar eureka-server.jar
+ENTRYPOINT ["java", "--add-opens", "java.base/java.time=ALL-UNNAMED", "-jar", "eureka-server.jar"]
